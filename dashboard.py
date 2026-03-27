@@ -3,12 +3,14 @@ import pandas as pd
 from pathlib import Path
 
 # --- CSV LOADING FUNCTION ---
-@st.cache_data(ttl=5)  # refresh cache every 5 seconds
+@st.cache_data(ttl=5)
 def load_data():
-    csv_path = Path(__file__).parent.parent / "output" / "value_bets.csv"
+    csv_path = Path(__file__).parent / "value_bets.csv"
+    
     if not csv_path.exists():
         st.error(f"CSV file not found at {csv_path}")
         return pd.DataFrame()
+        
     return pd.read_csv(csv_path)
 
 # --- SESSION STATE TO TRACK TOP BET ---
