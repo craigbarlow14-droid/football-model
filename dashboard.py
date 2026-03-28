@@ -36,7 +36,11 @@ if not results_df.empty:
         return [color] * len(row)
 
     st.subheader(f"Showing bets with edge ≥ {min_edge*100:.1f}%")
-    st.dataframe(filtered_df.style.apply(highlight_high_edges, axis=1))
+    st.dataframe(
+    filtered_df.style
+    .format({"best_edge": "{:.2%}"})
+    .apply(highlight_high_edges, axis=1)
+)
 
     # --- TOP BET ALERT ---
     top_bet = filtered_df.iloc[0]
