@@ -38,7 +38,12 @@ if not results_df.empty:
     st.subheader(f"Showing bets with edge ≥ {min_edge*100:.1f}%")
     st.dataframe(
     filtered_df.style
-    .format({"best_edge": "{:.2%}"})
+    .format({
+        "best_edge": "{:.1%}",
+        "home_edge": "{:.1%}",
+        "away_edge": "{:.1%}",
+        "draw_edge": "{:.1%}"
+    })
     .apply(highlight_high_edges, axis=1)
 )
 
