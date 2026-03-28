@@ -53,8 +53,8 @@ if not results_df.empty:
     if st.session_state.last_top_bet != top_bet["match"]:
         st.session_state.last_top_bet = top_bet["match"]
         st.balloons()  # fun popup effect
-        st.success(f"🔥 NEW TOP BET: {top_bet['match']} with edge {top_bet['best_edge']:.2f}")
+        st.success(f"🔥 NEW TOP BET: {top_bet['match']} with edge {top_bet['best_edge']:.1%}")
     else:
-        st.info(f"Top bet: {top_bet['match']} with edge {top_bet['best_edge']:.2f}")
+        st.info(f"Top bet: {top_bet['match']} with edge {top_bet['best_edge']:.1%}")
 else:
     st.warning("No data available.")
